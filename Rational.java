@@ -1,13 +1,12 @@
 /*
   Team TheGrimRepo - Derek Lin, Christopher Sherling
   APCS1 pd5
-  HW32 -- Irrationality Stops Here
-  2015-11-17
+  HW33 -- Do You Even Add, Bro?
+  2015-11-19
 */
 
 public class  Rational{
 	 
-
     private double numerator;
     private double denominator;
 
@@ -68,6 +67,12 @@ public class  Rational{
 	return (double)s;
     }
 
+    public double floatValue(){
+	double d;
+	d = (double)(numerator) / (double)(denominator);
+	return d;
+    }
+
     public void add(Rational r) {
 	this.numerator = this.numerator * r.denominator + r.numerator * this.denominator;
 	this.denominator*=r.denominator;
@@ -116,13 +121,21 @@ public class  Rational{
     }
 
     public void reduce(){
-	double a = this.numerator;
-	double b = this.denominator;
-	
-	this.numerator /= gcd(a, b);
-	this.denominator /= gcd(a, b);
+	this.numerator /= this.gcd();
+	this.denominator /= this.gcd();
     }
 
+    public int compareTo(Rational other){
+	if(this.floatValue() == other.floatValue()){
+	    return 0;
+	}
+	else if(this.floatValue() > other.floatValue()){
+	    return 1;
+	}
+	else{
+	    return -1;
+	}
+    }
     //Main woohoooooooooooooo #testcalls
     public static void main(String[] args) {
 		
@@ -133,6 +146,9 @@ public class  Rational{
 	Rational c = new Rational(6,8);
 	Rational d = new Rational(6,10);
 	Rational e = new Rational(10,6);
+	Rational f = new Rational(1,1);
+	Rational g = new Rational(2,2);
+	Rational h = new Rational(4,1);
 
 	// System.out.println("numerator is:" + r.numerator + " denominator is:" + r.denominator);
 	// System.out.println("we are dividing this by " + j.numerator + "/" + j.denominator);
@@ -162,6 +178,11 @@ public class  Rational{
         System.out.println("GCD OF 12 20: " + gcd(12, 20) + " Should be 4");
 	c.reduce();
 	System.out.println("Reduce: " + c + " Should be 3/4");
+	System.out.println("*==============*");
+	System.out.println();
+	System.out.println("f.compareTo(g), Expected: 0, Result: " + f.compareTo(g));
+	System.out.println("h.compareTo(f), Expected: 1, Result: " + h.compareTo(f));
+	System.out.println("f.compareTo(h), Expected: -1, Result: " + f.compareTo(h));
     }
 
 }
