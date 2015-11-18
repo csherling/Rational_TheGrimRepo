@@ -78,6 +78,28 @@ public class  Rational{
 	this.denominator*=r.denominator;
     }	
 
+    public int gcd(){
+	int a = (int)this.numerator;
+	int b = (int)this.denominator;
+	int c = 1;
+	if (a > b){	
+	    while( c != 0 ){
+		c = a%b;
+		a = b;
+		b = c;
+	    }
+	    return a;
+	}
+	else{
+	    while( c != 0 ){
+		c = b%a;
+		b = a;
+		a = c;
+	    }
+	    return b;
+	}
+    }
+
     public static int gcd(double a, double b) {
 	int y = (int)a;
 	int z = (int)b;
@@ -109,6 +131,8 @@ public class  Rational{
 	Rational a = new Rational(3,4);
 	Rational b = new Rational(5,6);
 	Rational c = new Rational(6,8);
+	Rational d = new Rational(6,10);
+	Rational e = new Rational(10,6);
 
 	// System.out.println("numerator is:" + r.numerator + " denominator is:" + r.denominator);
 	// System.out.println("we are dividing this by " + j.numerator + "/" + j.denominator);
@@ -130,8 +154,12 @@ public class  Rational{
 	r.add(j);
 	System.out.println("Add: " + r + " Should be 38/24");
 	a.subtract(b);
-	System.out.println("Sub: " + a + " Should be -2/24");
-	System.out.println("GCD OF 12 20: " + gcd(12, 20) + " Should be 4");
+	System.out.println("Sub: " + a + " Should be -2/24");	
+	System.out.println("*==============*");
+	System.out.println("d.gcd(), Expected: 2, Result: " + d.gcd());
+	System.out.println("e.gcd(), Expected: 2, Result: " + e.gcd());
+	System.out.println("GCD Static");
+        System.out.println("GCD OF 12 20: " + gcd(12, 20) + " Should be 4");
 	c.reduce();
 	System.out.println("Reduce: " + c + " Should be 3/4");
     }
