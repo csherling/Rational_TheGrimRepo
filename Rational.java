@@ -1,9 +1,7 @@
-/*
-  Team TheGrimRepo - Derek Lin, Christopher Sherling
-  APCS1 pd5
-  HW33 -- Do You Even Add, Bro?
-  2015-11-19
-*/
+/*  Team TheGrimRepo - Derek Lin, Christopher Sherling
+    APCS1 pd5
+    HW33 -- Do You Even Add, Bro?
+    2015-11-19 */
 
 public class  Rational{
 	 
