@@ -1,5 +1,5 @@
 /*
-  Team TheGrimRepo - Sachal Malick, Christopher Sherling
+  Team TheGrimRepo - Derek Lin, Christopher Sherling
   APCS1 pd5
   HW32 -- Irrationality Stops Here
   2015-11-17
