@@ -1,7 +1,7 @@
-/*  Team TheGrimRepo - Derek Lin, Christopher Sherling
+/*  Team Christo Meith  - Mei Huang, Christopher Sherling
     APCS1 pd5
-    HW33 -- Do You Even Add, Bro?
-    2015-11-19 */
+    HW37 -- Rational Equality
+    2015-11-24 */
 
 public class  Rational{
 	 
@@ -119,8 +119,9 @@ public class  Rational{
     }
 
     public void reduce(){
-	this.numerator /= this.gcd();
-	this.denominator /= this.gcd();
+	int x = this.gcd();
+	this.numerator /= x;
+	this.denominator /= x;
     }
 
     public int compareTo(Rational other){
@@ -133,6 +134,34 @@ public class  Rational{
 	else{
 	    return -1;
 	}
+    }
+
+    public boolean equals(Object o){
+	this.reduce();
+	((Rational)o).reduce();
+	 
+	//First, check for aliasing.
+	boolean retVal = this == o;
+ 
+	//Next, if this and input Object are different objects,
+        if ( !retVal ){
+ 
+	    //...check to see if input Object is a Rational
+	    retVal = o instanceof Rational
+ 
+		//...and that its state variables match those of this Tile
+		&& this.numerator == ((Rational)o).numerator
+		&& this.denominator == ((Rational)o).denominator;
+	    System.out.println(o);
+	    System.out.println(this);
+	    System.out.println(this.numerator);
+	    System.out.println(((Rational)o).numerator);
+	    System.out.println(this.denominator);
+	    System.out.println(((Rational)o).denominator);
+
+	}
+	return retVal;
+
     }
     //Main woohoooooooooooooo #testcalls
     public static void main(String[] args) {
@@ -181,6 +210,10 @@ public class  Rational{
 	System.out.println("f.compareTo(g), Expected: 0, Result: " + f.compareTo(g));
 	System.out.println("h.compareTo(f), Expected: 1, Result: " + h.compareTo(f));
 	System.out.println("f.compareTo(h), Expected: -1, Result: " + f.compareTo(h));
+	Rational aa = new Rational(3,4);
+	Rational ab = new Rational(6,8);
+	    
+	System.out.println(aa.equals(ab));
     }
 
 }
